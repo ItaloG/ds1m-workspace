@@ -7,11 +7,13 @@ public class Conta {
 	public String numero;
 	public String titular;
 	public boolean ativa;
+	public double limite;
+		
 
 	public void depoisitar(double valorDeposito) {
 
 		if (valorDeposito > 0) {
-			saldo = saldo + valorDeposito;
+			saldo += valorDeposito;
 		}
 		else {
 			System.out.println("Valor inválido!!!");
@@ -22,10 +24,22 @@ public class Conta {
 	public void mostrarSaldoDaConta() {
 		
 		System.out.println("Saldo: " + saldo);
+		System.out.println("Saldo + limite: " + (saldo + limite));
 	
 	}
+	
+	public double getSaldo() {
+		return saldo;
+	}
 
-	public void sacar() {
+	public void sacar(double valorDoSaque) {
+		
+		if ((saldo + limite) >= valorDoSaque) {
+			saldo -= valorDoSaque;
+		} else {
+			System.out.println("Saldo insuficiente!");
+		}
+		
 
 	}
 
